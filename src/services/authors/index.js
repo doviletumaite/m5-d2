@@ -58,6 +58,10 @@ authorsRouter.put("/:id", (req, res) => {
     const remainingPost = postsContent.filter(post => post.id !== req.params.id) // all the post except post that i'm looking for based on the id
     const updatedPost = { ...req.body, id: req.params.id} // take whatewer is in the body of my new post based on id
     remainingPost.push(updatedPost) // push the new post back in the array 
+    // another way
+    // const updatedPost = { ...postsContent[index], ...req.body }
+    //  postsContent[index] = updatedPost
+    console.log("updated post:",updatedPost )
     res.send(updatedPost) // send back the updated post
 })
 
