@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/doviletumaite/m5-d2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-list-endpoints": "^6.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
