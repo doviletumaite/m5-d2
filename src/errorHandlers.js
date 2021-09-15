@@ -16,3 +16,23 @@ export const badRequestErrorHandler = ( err, req, res, next) => {
         next(err)                                  // go on checking for other errors
     }
 }
+
+export const notFoundErrorHandler = (err, req, res, next) => {
+    if (err.status === 404) {
+        res.status(404).send({sucess: false, message: err.errorsList})
+    } else {                                        
+        next(err)                                  
+    }
+}
+
+export const forbiddenErrorHandler = (err, req, res, next) => {
+    if (err.status === 403) {
+        res.status(403).send({sucess: false, message: err.errorsList})
+    } else {                                        
+        next(err)                                  
+    }
+}
+
+export const genericServerErrorHandler = ( err, req, res, next) => {
+    res.status(500).send({sucess: false, message:"We have a generic server error!"})
+}

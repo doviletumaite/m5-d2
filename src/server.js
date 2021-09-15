@@ -1,6 +1,6 @@
 import  express  from "express";
 import listEndpoints from "express-list-endpoints";
-import { badRequestErrorHandler } from "./errorHandlers.js";
+import { badRequestErrorHandler, forbiddenErrorHandler, genericServerErrorHandler, notFoundErrorHandler } from "./errorHandlers.js";
 import authorsRouter from "./services/authors/index.js";
 
 // import cors from "cors"
@@ -21,6 +21,9 @@ server.use("/blogPosts", authorsRouter) // same prefix in mine endpoints
 
 // then ERROR MIDDLEWARES
 server.use(badRequestErrorHandler)
+server.use(notFoundErrorHandler)
+server.use(forbiddenErrorHandler)
+server.use(genericServerErrorHandler)
 
 console.table(listEndpoints(server))
 server.listen(port, () => {
