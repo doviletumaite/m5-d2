@@ -8,12 +8,12 @@ const server = express()
 
 
  
-const port = 3002
+const port = 3001
 
  server.use(cors())
 server.use(express.json()) // for handle the body and avoid undefined 
 // then i have to declare the endpoints
-server.use("/posts", authorsRouter) // same prefix in mine endpoints
+server.use("/authors", authorsRouter) // same prefix in mine endpoints
 console.table(listEndpoints(server))
 server.listen(port, () => {
     console.log(`my first running server on port ${port}`)

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1intaacktlvanxf",
+    "name": "Theresia",
+    "surname": "Schmeler",
+    "email": "Bennie.Waelchi@yahoo.com",
+    "dateOfBirth": "Fri Nov 06 2020 08:48:29 GMT+0100 (Ora standard dell’Europa centrale)",
+    "avatar": "http://ui-avatars.com/api/?name=Theresia+Schmeler",
+    "createdAt": "2021-09-15T18:58:45.026Z",
+    "updatedAt": "2021-09-15T18:58:45.026Z"
+  },
+  {
+    "id": "1intaacktlvauxc",
+    "name": "Carlo",
+    "surname": "Mertz",
+    "email": "Gladys_Schiller@hotmail.com",
+    "dateOfBirth": "Mon Nov 16 2020 23:18:57 GMT+0100 (Ora standard dell’Europa centrale)",
+    "avatar": "http://ui-avatars.com/api/?name=Carlo+Mertz",
+    "createdAt": "2021-09-15T18:58:54.096Z",
+    "updatedAt": "2021-09-15T18:58:54.096Z"
+  },
+  {
+    "id": "1intaacktlvaw73",
+    "name": "Ida",
+    "surname": "Hermann",
+    "email": "Otha.Christiansen78@yahoo.com",
+    "dateOfBirth": "Sat Mar 27 2021 17:48:46 GMT+0100 (Ora standard dell’Europa centrale)",
+    "avatar": "http://ui-avatars.com/api/?name=Ida+Hermann",
+    "createdAt": "2021-09-15T18:58:55.743Z",
+    "updatedAt": "2021-09-15T18:58:55.743Z"
+  },
+  {
+    "id": "1intaacktlvawqq",
+    "name": "Coty",
+    "surname": "Walter",
+    "email": "Leatha_Hayes88@yahoo.com",
+    "dateOfBirth": "Tue Nov 10 2020 16:01:42 GMT+0100 (Ora standard dell’Europa centrale)",
+    "avatar": "http://ui-avatars.com/api/?name=Coty+Walter",
+    "createdAt": "2021-09-15T18:58:56.450Z",
+    "updatedAt": "2021-09-15T18:58:56.450Z"
+  },
+  {
+    "id": "1intaacktlvax7u",
+    "name": "Providenci",
+    "surname": "Dach",
+    "email": "Xavier_Rath56@hotmail.com",
+    "dateOfBirth": "Fri Apr 09 2021 12:37:15 GMT+0200 (Ora legale dell’Europa centrale)",
+    "avatar": "http://ui-avatars.com/api/?name=Providenci+Dach",
+    "createdAt": "2021-09-15T18:58:57.066Z",
+    "updatedAt": "2021-09-15T18:58:57.066Z"
+  }
+]
