@@ -1,6 +1,6 @@
 // here i'm gonna to create the endpoints with routers (= set of endpoints that share the same PREFIX)
 // authors CRUD 
-// http://localhost:3001/posts 
+// http://localhost:3001/blogPosts 
 // let's create a ROUTER
 
 import express from "express"
@@ -17,7 +17,7 @@ const currentFilePath = fileURLToPath(import.meta.url) // way that node use inte
 
 const currentDirPath = dirname(currentFilePath)
 // then i have to concatenate them with node.js => import join from "path"
-const postsJSONFilePath = join(currentDirPath, "posts.json")
+const postsJSONFilePath = join(currentDirPath, "blogPosts.json")
 console.log("path of my posts.json:", postsJSONFilePath)
 // create routers for each methods (5 endpoinds with 5 methods)
 // implement with the handle function that provide the behavior 
