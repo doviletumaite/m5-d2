@@ -1,5 +1,6 @@
 import  express  from "express";
 import listEndpoints from "express-list-endpoints";
+import { badRequestErrorHandler } from "./errorHandlers.js";
 import authorsRouter from "./services/authors/index.js";
 
 // import cors from "cors"
@@ -16,9 +17,10 @@ server.use(express.json()) // for handle the body and avoid undefined
 
 // then i have to declare the endpoints
 // ENDPOINTS
-server.use("/posts", authorsRouter) // same prefix in mine endpoints
+server.use("/blogPosts", authorsRouter) // same prefix in mine endpoints
 
 // then ERROR MIDDLEWARES
+server.use(badRequestErrorHandler)
 
 console.table(listEndpoints(server))
 server.listen(port, () => {
