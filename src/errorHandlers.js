@@ -11,7 +11,7 @@
 // import the errorHandlers list in server.js and call the function after the endpoints, in the end of the flow
 export const badRequestErrorHandler = ( err, req, res, next) => {
     if (err.status === 400) {                     // if there is a 400 error 
-        res.status(400).send({sucess: false, message: err.errorsList})  // response with 400 status and send a proper message
+        res.status(400).send({sucess: false, message: err.errorsList })  // response with 400 status and send a proper message
     } else {                                        // else
         next(err)                                  // go on checking for other errors
     }

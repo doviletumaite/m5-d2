@@ -11,9 +11,18 @@ const port = 3001
 
 
 // first the GLOBAL MIDDLEWARES
+// middlewares are functions with THREE PARAMETERS 
+// REQUEST, RESPONSE, NEXT
+// let's create a global middleware that console log something for each routers
+const loggerMiddleware = (req, res, next) => {
+    console.log(`Request method ${req.method} +++++ Request URL ${req.url}`)
+    next()  // don't forget the NEXT() not to get stuck in sending request :)
+}
+
+// here i can call my GLOBAL MIDDLEWARES
 // server.use(cors())
 server.use(express.json()) // for handle the body and avoid undefined 
-
+server.use(loggerMiddleware)
 
 // then i have to declare the endpoints
 // ENDPOINTS
