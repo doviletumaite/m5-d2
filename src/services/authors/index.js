@@ -24,14 +24,29 @@ console.log("path of my posts.json:", postsJSONFilePath)
 // it takes two parameters = request & response
 
 // POST (+ body)
-authorsRouter.post("/", (req, res) => {
+authorsRouter.post("/", async (req, res) => {
     console.log("REQUEST BODY: ", req.body) // we want to read the body of the new post
-    const newPost = { ...req.body,  id: uniqid(), createdAt: new Date() } // create a new post the new post
+    // create a new post 
+   try {
+    const { name, surname, email, dateOfBirth} = req.body
+    const newPost = {
+        id: uniqid(),
+        name, 
+        surname, 
+        email, 
+        dateOfBirth, 
+        avatar: `http://ui-avatars.com/api/?name=${name}+${surname}`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        }
     console.log("my new post", newPost)
     const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array of posts
     postsContent.push(newPost) // push the new post in my array
     fs.writeFileSync(postsJSONFilePath, JSON.stringify(postsContent))
-res.send({id: newPost.id, date: newPost.createdAt}) // set two new properties of the body of my new post
+    res.send(newPost) // set two new properties of the body of my new post
+   } catch (error) {
+       res.send(500).send({message: error.message})
+   }
 })
 
 // GET

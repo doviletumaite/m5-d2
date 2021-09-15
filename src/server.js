@@ -2,15 +2,15 @@ import  express  from "express";
 import listEndpoints from "express-list-endpoints";
 import authorsRouter from "./services/authors/index.js";
 
-// import cors from "cors"
+ import cors from "cors"
 
 const server = express()
 
 
  
-const port = 3001
+const port = 3002
 
-// server.use(cors())
+ server.use(cors())
 server.use(express.json()) // for handle the body and avoid undefined 
 // then i have to declare the endpoints
 server.use("/posts", authorsRouter) // same prefix in mine endpoints
