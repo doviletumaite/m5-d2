@@ -43,12 +43,18 @@ authorsRouter.post("/", postValidator, (req, res, next) => {  // for handle the 
 
        // implement the function whit try&catch method to handle errors
        try {
-           const newPost = { ...req.body,  id: uniqid(), createdAt: new Date() } // create a new post the new post
+           const newPost = {
+                ...req.body, 
+                category: req.body.category, 
+                title: req.body.title, 
+                name: req.body.author.name, 
+                id: uniqid(), 
+                createdAt: new Date() } // create a new post the new post + VALIDATION
        console.log("my new post", newPost)
        const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array of posts
        postsContent.push(newPost) // push the new post in my array
        fs.writeFileSync(postsJSONFilePath, JSON.stringify(postsContent))
-       res.send({id: newPost.id, date: newPost.createdAt}) // set two new properties of the body of my new post
+       res.status(201).send({id: newPost.id, date: newPost.createdAt}) // set two new properties of the body of my new post
        } catch (error) {
            next(error)  // just call the next function in the end
        }
@@ -68,7 +74,7 @@ res.send(posts) // send back array of posts
     }
 })
 
-
+                      
 
 // GET by id
 authorsRouter.get("/:id", (req, res, next) => {
