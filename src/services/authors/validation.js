@@ -8,5 +8,5 @@ import {body} from "express-validator"
 export const postValidator = [
     body("category").exists().isLength({ min: 3 }).withMessage("Add the category of your article please :)"),
     body("title").exists().isLength({ min: 3 }).withMessage("Add the title of your article please :)"),
-    body("author.name").exists().isLength({ min: 3 }).withMessage("Add the author of your article please :)")
+    body("name").exists().isLength({ min: 3 }).withMessage("Add the author name of your article please :)")
 ]

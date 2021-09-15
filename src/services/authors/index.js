@@ -10,7 +10,7 @@ import { dirname, join } from "path"
 import uniqid from "uniqid" // for generate unique id
 import createHttpError from "http-errors" // this is useful for deal whit error in validation list
 import { validationResult } from "express-validator"
-import { postValidator } from "./validation"
+import { postValidator } from "./validation.js"
 
 
 const authorsRouter = express.Router()
@@ -47,7 +47,7 @@ authorsRouter.post("/", postValidator, (req, res, next) => {  // for handle the 
                 ...req.body, 
                 category: req.body.category, 
                 title: req.body.title, 
-                name: req.body.author.name, 
+                name: req.body.name, 
                 id: uniqid(), 
                 createdAt: new Date() } // create a new post the new post + VALIDATION
        console.log("my new post", newPost)
