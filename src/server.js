@@ -5,6 +5,7 @@ import authorsRouter from "./services/authors/index.js";
 import postsRouter from "./services/posts/index.js";
 
  import cors from "cors"
+import filesRouter from "./services/files/index.js";
 
 const server = express()
 
@@ -19,9 +20,9 @@ const loggerMiddleware = (req, res, next) => {
     console.log(`Request method ${req.method} +++++ Request URL ${req.url}`)
     next()  // don't forget the NEXT() not to get stuck in sending request :)
 }
-
+const publicFolderPath = join(process.cwd(), "public")
 // here i can call my GLOBAL MIDDLEWARES
-
+server.use(express.static(publicFolderPath))
 server.use(cors())
 server.use(express.json()) // for handle the body and avoid undefined 
 server.use(loggerMiddleware)
@@ -30,6 +31,7 @@ server.use(loggerMiddleware)
 // ENDPOINTS
 server.use("/blogPosts", postsRouter) // same prefix in mine endpoints
 server.use("/authors", authorsRouter )
+server.use("/files", filesRouter)
 // then ERROR MIDDLEWARES
 server.use(badRequestErrorHandler)
 server.use(notFoundErrorHandler)

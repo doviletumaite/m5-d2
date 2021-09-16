@@ -4,7 +4,7 @@
 // let's create a ROUTER
 
 import express from "express"
-import fs from "fs" // CORE MODULE => utilities for interact with file system 
+import fs from "fs-extra" // CORE MODULE => utilities for interact with file system 
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
 import uniqid from "uniqid" // for generate unique id
