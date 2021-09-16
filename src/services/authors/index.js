@@ -10,7 +10,7 @@ import { dirname, join } from "path"
 import uniqid from "uniqid" // for generate unique id
 import createHttpError from "http-errors" // this is useful for deal whit error in validation list
 import { validationResult } from "express-validator"
-import { postValidator } from "./validation.js"
+import { checkBlogPost, checkValidationResult } from "./validation.js"
 
 
 const authorsRouter = express.Router()
@@ -30,36 +30,37 @@ console.log("path of my posts.json:", postsJSONFilePath)
 // implement with the handleErrors
 
 // POST (+ body)
-authorsRouter.post("/", postValidator, (req, res, next) => {  // for handle the error i have to add next as a parameter
+authorsRouter.post("/", checkValidationResult, checkBlogPost, (req, res, next) => {  // for handle the error i have to add next as a parameter
     console.log("REQUEST BODY: ", req.body) // we want to read the body of the new post
    // implement with the validation sistem 
-   const errorList = validationResult(req)
+//    const errorList = validationResult(req)
    // add if statement to check if the error list is NOT empty
    // if is full use the next function to create the 400 error 
-   if (!errorList.isEmpty()){
-       next(createHttpError(400, {errorList}))
-   } else {
+//    if (!errorList.isEmpty()){
+//        next(createHttpError(400, {errorList}))
+//    } else {
        // if is empty (no validation error) then go forward :)
 
        // implement the function whit try&catch method to handle errors
        try {
            const newPost = {
-                category: req.body.category, 
-                title: req.body.title, 
-                name: req.body.name, 
-                id: uniqid(), 
-                createdAt: new Date() } // create a new post the new post + VALIDATION
+                id: uniqid(),
+                ...req.body,
+               
+                 createdAt: new Date(),
+                 updatedAt: new Date(),
+                 } // create a new post the new post + VALIDATION
        console.log("my new post", newPost)
        const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array of posts
        postsContent.push(newPost) // push the new post in my array
        fs.writeFileSync(postsJSONFilePath, JSON.stringify(postsContent))
-       res.status(201).send({id: newPost.id, date: newPost.createdAt}) // set two new properties of the body of my new post
+       res.status(201).send(newPost) // set two new properties of the body of my new post
        } catch (error) {
-           next(error)  // just call the next function in the end
+           next(error).send(500).send({ message: error.message }); 
        }
        
    }
-})
+)
 
 
 // GET
