@@ -9,8 +9,8 @@ import { fileURLToPath } from "url"
 import { dirname, join } from "path"
 import uniqid from "uniqid" // for generate unique id
 import createHttpError from "http-errors" // this is useful for deal whit error in validation list
-import { validationResult } from "express-validator"
-import { checkBlogPost, checkValidationResult } from "./validation.js"
+
+import { checkBlogPost, checkValidationResult } from "../authors/validation.js"
 
 
 const authorsRouter = express.Router()
