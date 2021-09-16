@@ -1,13 +1,14 @@
 import  express  from "express";
 import listEndpoints from "express-list-endpoints";
 import { badRequestErrorHandler, forbiddenErrorHandler, genericServerErrorHandler, notFoundErrorHandler } from "./errorHandlers.js";
+import authorsRouter from "./services/authors/index.js";
 import postsRouter from "./services/posts/index.js";
 
-// import cors from "cors"
+ import cors from "cors"
 
 const server = express()
 
-const port = 3000
+const port = 3001
 
 
 // first the GLOBAL MIDDLEWARES
@@ -20,14 +21,15 @@ const loggerMiddleware = (req, res, next) => {
 }
 
 // here i can call my GLOBAL MIDDLEWARES
-// server.use(cors())
+
+server.use(cors())
 server.use(express.json()) // for handle the body and avoid undefined 
 server.use(loggerMiddleware)
 
 // then i have to declare the endpoints
 // ENDPOINTS
 server.use("/blogPosts", postsRouter) // same prefix in mine endpoints
-
+server.use("/authors", authorsRouter )
 // then ERROR MIDDLEWARES
 server.use(badRequestErrorHandler)
 server.use(notFoundErrorHandler)
