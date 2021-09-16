@@ -7,7 +7,7 @@ import postsRouter from "./services/posts/index.js";
 
 const server = express()
 
-const port = 3001
+const port = 3000
 
 
 // first the GLOBAL MIDDLEWARES
