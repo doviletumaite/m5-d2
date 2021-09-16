@@ -44,7 +44,6 @@ authorsRouter.post("/", postValidator, (req, res, next) => {  // for handle the 
        // implement the function whit try&catch method to handle errors
        try {
            const newPost = {
-                ...req.body, 
                 category: req.body.category, 
                 title: req.body.title, 
                 name: req.body.name, 
