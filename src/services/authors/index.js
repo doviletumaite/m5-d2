@@ -1,5 +1,5 @@
 // here i'm gonna to create the endpoints with routers (= set of endpoints that share the same PREFIX)
-// authors CRUD 
+// posts CRUD 
 // http://localhost:3001/blogPosts 
 // let's create a ROUTER
 

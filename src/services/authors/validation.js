@@ -1,6 +1,6 @@
 // i have to install express-validator
 // then import it
-import {body, checkSchema, validationResult} from "express-validator"
+import { checkSchema, validationResult} from "express-validator"
 
 
 // i should import validationResult in my index :)
