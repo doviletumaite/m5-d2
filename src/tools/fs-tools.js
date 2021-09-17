@@ -1,7 +1,7 @@
 import fs from "fs-extra"
 import { join, dirname } from "path"
-import { fileURLToPath } from "url"
-import {cwd} from "process"
+// import { fileURLToPath } from "url"
+
 
 const { writeFile } = fs
 

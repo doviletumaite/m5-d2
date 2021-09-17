@@ -9,16 +9,16 @@ const filesRouter = express.Router()
 // POST PICS
 
 filesRouter.post("/upload/posts/:id"),
-// i shoul use multer: middleware for handling multpart/form-data / upload files basically
+// i should use multer: middleware for handling form-data / upload files basically
 multer({
     fileFilter: (req, file, cb) => {
         if (file.mimetype !== "image/jpeg") cb (createHttpError(400), { errorsList: "Format not supported!" }, false)
         else cb (null, true)
     },
-}).single("img")
+}).single("img"),
 async(req, res, next) => {
 try {
-  await savePicture("img.jpeg", req, file, buffer)  
+  await savePicture(file.originalname, req.file.buffer)  
   res.send("OK")
 } catch (error) {
     next(error)
@@ -26,3 +26,12 @@ try {
 }
 
 export default filesRouter
+
+// const {originalname}=req.file;
+
+//       const [name,extension] = originalname.split(".")
+//       const filename = `${req.params.id}.${extension}`
+//       const port = isProduction?"":":3001"
+
+//       const baseURL = `${req.protocol}://${req.hostname}${port}`
+//       const url = `${baseURL}/img/authors/${filename}`
