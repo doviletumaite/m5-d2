@@ -70,7 +70,7 @@ authorsRouter.get("/", (req, res, next) => {
 const allAuthors = JSON.parse(authors) // "translate" it in json
 res.send(allAuthors) // send back array of posts
     } catch (error) {
-        next(error).send({ message: error.message });
+        next(error)
     }
 })
 

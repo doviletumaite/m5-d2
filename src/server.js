@@ -3,6 +3,7 @@ import listEndpoints from "express-list-endpoints";
 import { badRequestErrorHandler, forbiddenErrorHandler, genericServerErrorHandler, notFoundErrorHandler } from "./errorHandlers.js";
 import authorsRouter from "./services/authors/index.js";
 import postsRouter from "./services/posts/index.js";
+import { join } from "path"
 
  import cors from "cors"
 import filesRouter from "./services/files/index.js";
@@ -20,7 +21,7 @@ const loggerMiddleware = (req, res, next) => {
     console.log(`Request method ${req.method} +++++ Request URL ${req.url}`)
     next()  // don't forget the NEXT() not to get stuck in sending request :)
 }
-const publicFolderPath = join(process.cwd(), "public")
+const publicFolderPath = join(process.cwd(), "./public")
 // here i can call my GLOBAL MIDDLEWARES
 server.use(express.static(publicFolderPath))
 server.use(cors())
