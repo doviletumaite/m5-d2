@@ -4,9 +4,9 @@
 // let's create a ROUTER
 
 import express from "express"
-import fs from "fs-extra" // CORE MODULE => utilities for interact with file system 
-import { fileURLToPath } from "url"
-import { dirname, join } from "path"
+// import fs from "fs-extra" // CORE MODULE => utilities for interact with file system 
+// import { fileURLToPath } from "url"
+// import { dirname, join } from "path"
 import uniqid from "uniqid" // for generate unique id
 import createHttpError from "http-errors" // this is useful for deal whit error in validation list
 
@@ -75,8 +75,9 @@ postsRouter.get("/", async (req, res, next) => {
          // const postsContent = fs.readFileSync(postsJSONFilePath)  // look at the correct file and save it in a variable
          const postsContent = await getPosts()
         //  const posts = JSON.parse(postsContent) // "translate" it in json
-        const posts =writePosts(postsContent)
-         res.send(posts) // send back array of posts
+          console.log("post content", postsContent)
+     
+         res.send(postsContent) // send back array of posts
     } catch (error) {
         next(error)
     }
