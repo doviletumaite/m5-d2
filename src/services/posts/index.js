@@ -57,9 +57,12 @@ postsRouter.post("/", checkValidationResult, checkBlogPost, async (req, res, nex
        console.log("my new post", newPost)
     //    const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array of posts
        const postsContent = await getPosts()
+       
        postsContent.push(newPost) // push the new post in my array
     //    fs.writeFileSync(postsJSONFilePath, JSON.stringify(postsContent))
-       await writePosts(books)
+       console.log("posts content:", postsContent)
+    await writePosts(postsContent)
+       
        res.status(201).send(newPost) // set two new properties of the body of my new post
        } catch (error) {
            next(error) 
@@ -116,7 +119,7 @@ postsRouter.put("/:id", async (req, res, next) => {
     // const remainingPost = postsContent.filter(post => post.id !== req.params.id) // all the post except post that i'm looking for based on the id
     // const updatedPost = { ...req.body, id: req.params.id} // take whatewer is in the body of my new post based on id
     // remainingPost.push(updatedPost) // push the new post back in the array 
-    // // another way
+     // another way
     // const updatedPost = { ...postsContent[index], ...req.body }
     //  postsContent[index] = updatedPost
 
@@ -141,7 +144,9 @@ postsRouter.delete("/:id", async (req, res, next) => {
    try {
     // const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array 
     const postsContent = await getPosts()
+    console.log("array posts:",  postsContent)
     const filteredPost = postsContent.filter(post => post.id !== req.params.id) // grab everything except the post.id that we want to delete
+    console.log("post that i want to delete:", req.params.id)
     // fs.writeFileSync(postsJSONFilePath, JSON.stringify(remainingPost)) // write the remaining array of posts
     await writePosts(filteredPost)
     res.status(204).send() // we don't have to send nothing back because we're just deleting :)
