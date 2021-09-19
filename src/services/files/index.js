@@ -8,7 +8,7 @@ const filesRouter = express.Router()
 //http://localhost:3001/files/upload/posts/:id
 // POST PICS
 
-filesRouter.post("/upload/posts/:id"),
+filesRouter.post("/upload/posts/:id",
 // i should use multer: middleware for handling form-data / upload files basically
 multer({
     fileFilter: (req, file, cb) => {
@@ -23,7 +23,7 @@ try {
 } catch (error) {
     next(error)
 }
-}
+})
 
 export default filesRouter
 

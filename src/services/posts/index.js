@@ -37,12 +37,12 @@ const postsRouter = express.Router()
 postsRouter.post("/", checkValidationResult, checkBlogPost, async (req, res, next) => {  // for handle the error i have to add next as a parameter
     console.log("REQUEST BODY: ", req.body) // we want to read the body of the new post
    // implement with the validation sistem 
-//    const errorList = validationResult(req)
+    // const errorList = validationResult(req)
    // add if statement to check if the error list is NOT empty
    // if is full use the next function to create the 400 error 
 //    if (!errorList.isEmpty()){
-//        next(createHttpError(400, {errorList}))
-//    } else {
+//         next(createHttpError(400, {errorList}))
+//   } else {
        // if is empty (no validation error) then go forward :)
 
        // implement the function whit try&catch method to handle errors
@@ -50,18 +50,18 @@ postsRouter.post("/", checkValidationResult, checkBlogPost, async (req, res, nex
            const newPost = {
                 id: uniqid(),
                 ...req.body,
-               
+                 
                  createdAt: new Date(),
                  updatedAt: new Date(),
                  } // create a new post the new post + VALIDATION
        console.log("my new post", newPost)
     //    const postsContent = JSON.parse(fs.readFileSync(postsJSONFilePath)) // grab the array of posts
        const postsContent = await getPosts()
-       
+        console.log("posts content:", postsContent)
        postsContent.push(newPost) // push the new post in my array
     //    fs.writeFileSync(postsJSONFilePath, JSON.stringify(postsContent))
-       console.log("posts content:", postsContent)
-    await writePosts(postsContent)
+      
+     writePosts(postsContent)
        
        res.status(201).send(newPost) // set two new properties of the body of my new post
        } catch (error) {

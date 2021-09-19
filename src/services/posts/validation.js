@@ -79,7 +79,7 @@ export const checkBlogPost = checkSchema(schema);
 // i can build up my checkResuld function here instead of in my router
 
 export const checkValidationResult = (req, res, next) => {   // then add checkValidatioResult to the props of my router
-    const errors = validationResult(req);  // i shoul add validationResul in the import section
+    const errors = validationResult(req);  // i should add validationResul in the import section
     if (!errors.isEmpty()) {
       const error = new Error("Your post request is failed :/");
       error.status = 400;
